@@ -24,9 +24,9 @@ The <info>vk:find</info> search word
 		$output->writeln('Hello <info>'.$search.'</info>');
 		$secret = 'e72c2df9bce21df37c';
 		$vkApi = new \Parser\VK( $access_token, $secret);
-		$file_handle = fopen("in/in.txt", "r");
-		$file = "out/out.txt";
-		file_put_contents('out/out.txt', '');
+		$file_handle = fopen("/var/www/html/parser/in/in.txt", "r");
+		$file = "/var/www/html/parser/out/out.txt";
+		file_put_contents('/var/www/html/parser/out/out.txt', '');
 		while (!feof($file_handle)) {
 			sleep(1);
 			$line = fgets($file_handle);
@@ -53,5 +53,6 @@ The <info>vk:find</info> search word
 				}
 			}
 		}
+		file_put_contents($file, 'end', FILE_APPEND | LOCK_EX);
 	});
 $console->run();
